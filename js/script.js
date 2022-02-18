@@ -1,157 +1,180 @@
 "use strict";
 
-// ! Практическая задача №1 
-// * (Работа с обьектами, массивами, alert)
+ // ! Практическая задача №1 
+    // * (Работа с обьектами, массивами, alert)
+    
+    // todo Задание 1 (Практическая работа №4)
 
-let numberOfFilms;
+    const personalMovieDB = {
+        count: 0,
+        movies: {},
+        actors: {},
+        genres: [],
+        privat: false,
 
-function start() {
-    numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+        start: function() {
+                personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+        
+                while (personalMovieDB.count == "" || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+                    personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+                
+            }
+        },
 
-    while (numberOfFilms == "" || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+        rememberMyFilms: function() {
+                for (let i = 0; i < 2; i++) {
+                
+                const a = prompt("Один из последних просмотренных фильмов?", ""),
+                    b = prompt("На сколько оцените его?", "");
+            
+                if (a !=  null && b != null && a != '' && b != '' && a.length < 50) {
+                    personalMovieDB.movies[a] = b;
+                    console.log("done!");
+                } else {
+                    console.log("Error!");
+                    i--;
+                }
+            }
+        },
+
+        detectPersonalLive: function() {
+            if (personalMovieDB.count < 10) {
+                console.log("Просмотрено довольно мало фильмов!");
+            } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+                console.log("Вы классический зритель!");
+            } else if (personalMovieDB.count >= 30) {
+                console.log("Вы киноман!");
+            } else {
+                console.log("Произошла ошибка!");
+            }
+        },
+
+        showMyDB: function(hidden) {
+            if (!hidden) {
+                console.log(personalMovieDB);
+            }
+        },
+
+        toggleVisibleDB: function() {
+            if (personalMovieDB.privat) {
+                personalMovieDB.privat = false;
+            } else {
+                personalMovieDB.privat = true;
+            }
+        },
+
+        writeYourGenres: function() {
+            
+            for(let i = 1; i <= 3; i++) {
+                let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+            if (genre === "" || genre == null) {
+                console.log("Вы ввели некорректные данные");
+                i--;
+            } else {
+                personalMovieDB.genres[i - 1] = genre;
+            }
+        }
+        
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Любимый жанр ${i + 1} это ${item}`);
+        });
     }
-}
-
-start();
-
-let personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genras: [],
-    privat: false
 };
 
-
-//     h = prompt("Какие вы любите смотреть жанр №1?", ""),
-//     y = prompt("Какие вы любите смотреть жанры №2?", ""),
-//     c = prompt("Какие вы любите смотреть жанры №3?", "");
-
-    
-// personalMovieDB.movies[a] = b; 
-// personalMovieDB.actors[f] = p;
-// personalMovieDB.genras.push(h,y,c);
+    //     h = prompt("Какие вы любите смотреть жанр №1?", ""),
+    //     y = prompt("Какие вы любите смотреть жанры №2?", ""),
+    //     c = prompt("Какие вы любите смотреть жанры №3?", "");
 
 
-// console.log(personalMovieDB);
+    // personalMovieDB.movies[a] = b; 
+    // personalMovieDB.actors[f] = p;
+    // personalMovieDB.genras.push(h,y,c);
 
 
-// ! Практическая задача №2 
-// * Задание 1 и 2 (Работа с условием и циклами) 
-// * Автоматизация фильмов 
-// todo for
+    // console.log(personalMovieDB);
 
 
-function rememberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        const a = prompt("Один из последних просмотренных фильмов?", ""),
-                b = prompt("На сколько оцените его?", "");
-    
-        if (a !=  null && b != null && a != '' && b != '' && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-            console.log("done!");
-        } else {
-            console.log("Error!");
-            i--;
-        }
-        // personalMovieDB.movies[a] = b; 
-    }
-}
-
-// rememberMyFilms();
-
-// console.log(personalMovieDB);
-
-// * Задание 3  
-// todo работа с условием
+ // ! Практическая задача №2 
+    // * Задание 1 и 2 (Работа с условием и циклами) 
+    // * Автоматизация фильмов 
+    // todo for
 
 
-function detectPersonalLevel() {
-    if (personalMovieDB.count < 10) {
-        console.log("Просмотрено довольно мало фильмов!");
-    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-        console.log("Вы классический зритель!");
-    } else if (personalMovieDB.count >= 30) {
-        console.log("Вы киноман!");
-    } else {
-        console.log("Произошла ошибка!");
-    }
-}
-
-// detectPersonalLevel();
+    // * Задание 3  
+    // todo работа с условием
 
 
-// * Задание 4
+    // * Задание 4
 
-// todo while
+    // todo while
 
-// let i = 0;
+    // let i = 0;
 
-// while (i < 1) {
-//     const a = prompt("Один из последних просмотренных фильмов?", ""),
-//         b = prompt("На сколько оцените его?", "");
-    
-//     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-//         personalMovieDB.movies[a] = b;
-//         console.log("Done!");
-//         i++;
+    // while (i < 1) {
+    //     const a = prompt("Один из последних просмотренных фильмов?", ""),
+    //         b = prompt("На сколько оцените его?", "");
 
-//     } else {
-//         console.log("Error!");
-//         i--;
-//     }
-// }
+    //     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+    //         personalMovieDB.movies[a] = b;
+    //         console.log("Done!");
+    //         i++;
 
-// todo do while
+    //     } else {
+    //         console.log("Error!");
+    //         i--;
+    //     }
+    // }
 
-// do {
-//     console.log(i);
-//     i++;
-// }
+    // todo do while
 
-// while (i < 1) {
-//     const a = prompt("Один из последних просмотренных фильмов?", ""),
-//         b = prompt("На сколько оцените его?", "");
-    
-//     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-//         personalMovieDB.movies[a] = b;
-//         console.log("Done!");
-//         i++;
+    // do {
+    //     console.log(i);
+    //     i++;
+    // }
 
-//     } else {
-//         console.log("Error!");
-//         i--;
-//     }
-// }
+    // while (i < 1) {
+    //     const a = prompt("Один из последних просмотренных фильмов?", ""),
+    //         b = prompt("На сколько оцените его?", "");
 
-// console.log(personalMovieDB);
+    //     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+    //         personalMovieDB.movies[a] = b;
+    //         console.log("Done!");
+    //         i++;
+
+    //     } else {
+    //         console.log("Error!");
+    //         i--;
+    //     }
+    // }
+
+    // console.log(personalMovieDB);
 
 
 // ! Практическая работа №3
-// * Работа с функциями 
-
-function showMyDB(hidden) {
-    if (!hidden) {
-        console.log(personalMovieDB);
-    }
-}
-
-showMyDB(personalMovieDB.privat);
+    // * Работа с функциями 
 
 
-function writeYourGenres() {
-    for(let i = 1; i <= 3; i++) {
-        let genre = prompt(`Ваш любимый жанр под номером ${i}`);
-        
-        if (genre != null && genre != "") {
-            personalMovieDB.genras[i - 1] = genre;
-        } else {
-            i--;
-        }
-    } 
-}
 
-writeYourGenres();
+
+ // ! Практическая работа №4 
+    // * Работа с обьектами
+    // * Задание 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

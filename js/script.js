@@ -62,18 +62,30 @@
                 personalMovieDB.privat = true;
             }
         },
-
+        
+        // todo Задание 2 (Практическая работа №4)
         writeYourGenres: function() {
             
-            for(let i = 1; i <= 3; i++) {
-                let genre = prompt(`Ваш любимый жанр под номером ${i}`);
-            if (genre === "" || genre == null) {
-                console.log("Вы ввели некорректные данные");
+            for(let i = 1; i < 2; i++) {
+            //     let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+            // if (genre === "" || genre == null) {
+            //     console.log("Вы ввели некорректные данные или вовсе их не ввели");
+            //     i--;
+            // } else {
+            //     personalMovieDB.genres[i - 1] = genre;
+
+            // todo 2 способ 
+
+            let genres = prompt("Введите ваши любимые жанры через запятую");
+            if (genres === "" || genres == null ) {
+                console.log("Вы ввели некорректные данные или ввели их вовсе неправильно");
                 i--;
-            } else {
-                personalMovieDB.genres[i - 1] = genre;
-            }
+                } else {
+                    personalMovieDB.genres = genres.split(', ');
+                    personalMovieDB.genres.sort(); // ! перебирает слово по регистру если с верхнего то становится в вверх списка
+                }
         }
+    
         
         personalMovieDB.genres.forEach((item, i) => {
             console.log(`Любимый жанр ${i + 1} это ${item}`);
@@ -158,7 +170,6 @@
 
  // ! Практическая работа №4 
     // * Работа с обьектами
-    // * Задание 2
 
 
 
